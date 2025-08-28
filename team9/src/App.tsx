@@ -27,6 +27,7 @@ function App() {
                 </Routes>
             </BrowserRouter>
             <Background/>
+            <img src="../public/background.png"/>
         </>
     );
 }
