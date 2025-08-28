@@ -99,8 +99,8 @@ const DATABASE_CARD: Omit<Card, 'id'>[] = [ // ← 修正点: idを除いた型�
     //animation
     { code: { animation: " 3s ease-in 1s infinite reverse both running slide-in", }, looks: "アニメーションを追加します。", view_code: "animation: 3s ease-in 1s infinite reverse both running slide-in;", lv: 4 },
     { code: { animation: "3s linear 1s infinite running slide-in", }, looks: "アニメーションを追加します。", view_code: "animation: 3s linear 1s infinite running slide-in;", lv: 4 },
-    { code: { animation: "3s linear 1s infinite alternate slide-in", }, looks: "アニメーションを追加します。", view_code: "animation: 3s linear 1s infinite alternate slide-in;", lv: 4 },
-    { code: { animation: " 0.5s linear 1s infinite alternate slide-in", }, looks: "アニメーションを追加します。", view_code: "animation: 0.5s linear 1s infinite alternate slide-in;", lv: 5 },
+    { code: { animation: "3s linear 1s infinite alternate rotating", }, looks: "アニメーションを追加します。", view_code: "animation: 3s linear 1s infinite alternate rotating;", lv: 4 },
+    { code: { animation: " 0.5s linear 1s infinite alternate rotating", }, looks: "アニメーションを追加します。", view_code: "animation: 0.5s linear 1s infinite alternate rotating;", lv: 5 },
 ];
 
 function createInitialCards(): Card[] {

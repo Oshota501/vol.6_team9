@@ -1,0 +1,37 @@
+.goj1{
+    border: 1px solid;
+    width: 100px;
+    height: 100px;
+    animation: 10s linear infinite goj1_a;
+    background-color: blue;
+    transform: translateX(100) translateY(100);
+}
+@keyframes goj1_a{
+    0%{
+        background-color: blue;
+        transform: translateX(100px) translateY(100px);
+        border-radius: 0%;
+    }
+    20%{
+        background-color: green;
+        transform: translateX(600px) translateY(100px) scaleX(0.5) scaleY(2);
+        border-radius: 50%;
+    }
+    40%{
+        background-color: yellow;
+        transform: translateX(800px) translateY(400px) scaleX(1.5) scaleY(0.7);
+        border-radius: 20%;
+    }
+    60%{
+        background-color: red;
+        transform: translateX(300px) translateY(500px) rotate3d(0deg,180deg,180deg);
+    }
+    80%{
+        background-color: purple;
+        transform: translateX(400px) translateY(100px) rotate(180deg);
+    }
+    100%{
+        background-color: blue;
+        transform: translateX(100px) translateY(100px);
+    }
+}

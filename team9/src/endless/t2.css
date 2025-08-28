@@ -79,12 +79,18 @@
 
 @keyframes slide-in {
   from {
-    margin-left: 100%;
-    width: 300%;
+    transform: translateX(120px);
   }
   to {
-    margin-left: 0%;
-    width: 100%;
+    transform: translate(-120px);
+  }
+}
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 .back_button{

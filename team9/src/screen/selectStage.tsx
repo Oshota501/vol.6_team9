@@ -42,16 +42,12 @@ const StageSelect: React.FC = () => {
                     </button>
                 </div>
                 <div className="stage-card">
-                    <button
+                    <a href="/game/lv3"><button
                         className="start-stage-button"
-                        onClick={() => {
-                            setStage(2); // ステージ3
-                            navigate("/game");
-                        }}
                     >
                         <h2>Monster</h2>
-                        <p>少し難しくなります。新しい要素が登場します。</p>
-                    </button>
+                        
+                    </button></a>
                 </div>
                 {/* 必要に応じてステージカードを追加 */}
             </div>
