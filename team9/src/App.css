@@ -1,64 +1,116 @@
-/* 基本的なリセットと背景設定 */
-body {
+/*
+アプリケーション全体に反映される
+import "./App.css";
+---
+特定のクラスにものみ適応させる
+import styles from "./App.css";
+<h1 className={styles.~}>Hello!</h1>
+*/
+
+/* CSSの初期化や全体反映のみ指定 */
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #242424;
-  color: rgba(255, 255, 255, 0.87);
+  padding: 0;
+  font-family: 'Inter', sans-serif;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body{
+    background-image: url("../public/background.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+}
+.title{
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+button{
+    border-radius: 7px;
+    margin: 10px 20px;
+}
+.start{
+    width: 300px;
+    height: 100px;
+    font-size: 32px;
+    background-color: #c7e4fd;
+}
+.start:hover{
+    background-color: #4169E1;
+}
+.card{
+    width: 300px;
+    height: 100px;
+    font-size: 32px;
+    background-color: #c7e4fd;
+}
+.card:hover{
+    background-color: #4169E1;
+}
+.stage{
+    width: 300px;
+    height: 100px;
+    font-size: 32px;
+    background-color: #c7e4fd;
+}
+.stage:hover{
+    background-color: #4169E1;
+}
+.card:hover {
+    background-color: #4169E1;
+}
+.start-hover-text {
+    width: 800px;
+    visibility: hidden; /* 初期状態では非表示 */
+    opacity: 0; /* 初期状態では透明 */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* スムーズに表示 */
+    color: #333;
+    font-size: 32px;
+    text-align: center;
+}
+.start:hover + .start-hover-text{
+    visibility: visible;
+    opacity: 1;
+}
+/* カードボタンにhoverしたときに表示するテキスト */
+.card-hover-text {
+    width: 800px;
+    visibility: hidden; /* 初期状態では非表示 */
+    opacity: 0; /* 初期状態では透明 */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* スムーズに表示 */
+    color: #333;
+    font-size: 32px;
+    text-align: center;
 }
 
-/* 各画面共通のコンテナ */
-.screen-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
+/* hover時にテキストを表示 */
+.card:hover + .card-hover-text {
+    visibility: visible;
+    opacity: 1;
+}
+.stage-hover-text {
+    width: 800px;
+    visibility: hidden; /* 初期状態では非表示 */
+    opacity: 0; /* 初期状態では透明 */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* スムーズに表示 */
+    color: #333;
+    font-size: 32px;
+    text-align: center;
 }
 
-/* タイトル文字のスタイル */
-.title {
-  font-size: 4em;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  background: -webkit-linear-gradient(45deg, #a2facf, #6495ed);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* hover時にテキストを表示 */
+.stage:hover + .stage-hover-text {
+    visibility: visible;
+    opacity: 1;
 }
-
-/* ボタンコンテナのスタイル */
-.button-container {
-  display: flex;
-  gap: 1.5rem; /* ボタン間のスペース */
+.content{
+    display: flex;
 }
-
-/* ボタンのスタイル */
-.button-link {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: rgba(255, 255, 255, 0.87);
-  cursor: pointer;
-  transition: border-color 0.25s, background-color 0.25s;
-  text-decoration: none;
-}
-
-.button-link:hover {
-  border-color: #646cff;
-  background-color: #333;
+.operation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
