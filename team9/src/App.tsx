@@ -27,7 +27,7 @@ function App() {
                     {/* URLが "/game" の時は page.tsx (GameScreenHome) を表示 */}
                     <Route path="/game" element={<GameScreenHome />} />
 
-                    <Route path="/endless_game/start" element={<Game />} />
+                    <Route path="/endless_game_start" element={<Game />} />
                     <Route path="/endless_game" element={<GameExplain />} />
 
                     <Route path="/game/lv3" element={<GameLv3 />} />
