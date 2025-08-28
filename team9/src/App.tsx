@@ -28,9 +28,6 @@ function App() {
                 </Routes>
             </BrowserRouter>
             <Background/>
-            <img src={
-                BgImg
-            }/>
         </>
     );
 }
