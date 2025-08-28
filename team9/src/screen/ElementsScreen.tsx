@@ -66,7 +66,13 @@ export default function ElementsScreen({ blocks, groups, selectedBlockIds, onBlo
                 let initialPositionClass = '';
                 if (block.id === 1) initialPositionClass = 'item-top-left';
                 if (block.id === 2) initialPositionClass = 'item-bottom-right';
-
+                if (block.id === 3) initialPositionClass = 'item-top-center';
+                if (block.id === 4) initialPositionClass = 'item-top-right';
+                if (block.id === 5) initialPositionClass = 'item-center-left';
+                if (block.id === 6) initialPositionClass = 'item-center';
+                if (block.id === 7) initialPositionClass = 'item-center-right';
+                if (block.id === 8) initialPositionClass = 'item-bottom-left';
+                if (block.id === 9) initialPositionClass = 'item-bottom-center';
                 return (
                     // 個々のブロックコンポーネントを呼び出す
                     <GameOfElement

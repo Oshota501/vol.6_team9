@@ -9,3 +9,43 @@
   /* ★追加★ 親の残りのスペースを全て占めるように */
   flex-grow: 1; 
 }
+
+.item-top-center {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.item-top-right {
+  top: 10%;
+  right: 10%;
+}
+
+.item-center-left {
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+}
+
+.item-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.item-center-right {
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+}
+
+.item-bottom-left {
+  bottom: 10%;
+  left: 10%;
+}
+
+.item-bottom-center {
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -37,6 +37,18 @@ const StageSelect: React.FC = () => {
                             navigate("/game");
                         }}
                     >
+                        <h2>Easy</h2>
+                        <p>少し難しくなります。新しい要素が登場します。</p>
+                    </button>
+                </div>
+                <div className="stage-card">
+                    <button
+                        className="start-stage-button"
+                        onClick={() => {
+                            setStage(2); // ステージ3
+                            navigate("/game");
+                        }}
+                    >
                         <h2>Monster</h2>
                         <p>少し難しくなります。新しい要素が登場します。</p>
                     </button>
