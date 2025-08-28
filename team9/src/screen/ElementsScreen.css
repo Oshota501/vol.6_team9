@@ -1,0 +1,11 @@
+/* パズルエリアのコンテナ */
+.puzzle-container {
+  width: 100%;
+  height: 100%; /* 親の高さに合わせて広がる */
+  border: 2px dashed #ccc;
+  box-sizing: border-box;
+  position: relative;
+  
+  /* ★追加★ 親の残りのスペースを全て占めるように */
+  flex-grow: 1; 
+}

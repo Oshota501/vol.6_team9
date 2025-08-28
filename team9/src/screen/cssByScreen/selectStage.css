@@ -1,0 +1,188 @@
+/* src/screen/cssByScreen/selectStage.css */
+
+.select-stage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* 要素を上下に分散配置 */
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  background-color: none; /* 背景色を少し変更 */
+  color: #333;
+  position: relative; /* 子要素の絶対配置の基準にする */
+}
+
+/* 左上の戻るボタン */
+.back-button {
+  position: absolute; /* 絶対配置 */
+  top: 20px;
+  left: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%; /* 丸い形にする */
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* 幅と高さを設定して正円に */
+  height: 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 10; /* 他の要素の上に表示 */
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+/* ステージカードのラッパー */
+.stage-cards-wrapper {
+  display: flex;
+  flex-direction: row; /* カードを横並びにする */
+  gap: 30px; /* カード間のスペース */
+  justify-content: center; /* 中央揃え */
+  align-items: center;
+  flex-wrap: wrap; /* 画面幅が狭い場合に折り返す */
+  margin-top: 50px; /* 上部のマージンを調整 */
+  margin-bottom: 50px; /* 下部のマージンを調整 */
+  width: 100%; /* 親要素の幅いっぱいに広げる */
+  max-width: 900px; /* 最大幅を設定 */
+}
+
+/* 個々のステージカードのスタイル */
+.stage-card {
+  background-color: #8ac9a4;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  width: 100%; /* 小さい画面では幅いっぱいに */
+  max-width: 350px; /* カードの最大幅 */
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* コンテンツを上下に分散 */
+  min-height: 200px; /* 最小高さを設定 */
+}
+
+.stage-card:hover {
+  transform: translateY(-5px); /* ホバー時に少し浮き上がる */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.stage-card h2 {
+  font-size: 2rem;
+  color: #ebe379;
+  margin-bottom: 15px;
+}
+
+.stage-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+  flex-grow: 1; /* 段落が利用可能なスペースを埋める */
+}
+
+/* ステージカード内の開始ボタン */
+.start-stage-button {
+  background-color: #8ac9a4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.start-stage-button:hover {
+  background-color: #5ac988;
+  transform: translateY(-1px);
+}
+
+/* 下部中央のボタンコンテナ */
+.bottom-button-container {
+  margin-top: auto; /* 下部に固定するために自動マージンを使用 */
+  margin-bottom: 20px; /* 下部のパディング */
+}
+
+/* グローバルなプライマリボタンのスタイル（App.cssから移動または調整） */
+.button-primary {
+  background-color: #ebe379;
+  color: white;
+  padding: 15px 30px; /* パディングを大きくする */
+  border: none;
+  border-radius: 10px; /* 角をさらに丸くする */
+  cursor: pointer;
+  font-size: 1.3rem; /* フォントサイズを大きくする */
+  font-weight: bold; /* 太字 */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  min-width: 250px; /* 最小幅をさらに大きくする */
+}
+
+.button-primary:hover {
+  background-color: #e6db48;
+  transform: translateY(-4px); /* ホバー時の移動を強調 */
+}
+
+/* レスポンシブデザインの調整 */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  .stage-cards-wrapper {
+    flex-direction: column; /* 小さい画面ではカードを縦並びにする */
+    gap: 20px;
+  }
+
+  .stage-card {
+    max-width: 90%; /* 小さい画面では幅を広げる */
+    padding: 25px;
+  }
+
+  .button-primary {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .back-button {
+    top: 10px;
+    left: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .stage-card {
+    padding: 20px;
+  }
+
+  .stage-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .stage-card p {
+    font-size: 0.9rem;
+  }
+
+  .button-primary {
+    min-width: 180px;
+  }
+}

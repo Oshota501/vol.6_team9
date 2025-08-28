@@ -1,0 +1,45 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    height: 100vh; /* 画面全体の高さに合わせる */
+}
+
+.left_menue {
+    position:fixed;
+    width: 72%;
+    border: 4px solid;
+    height: 100%;
+    box-sizing: border-box;
+    border-color: rgb(255, 167, 167);
+}
+
+.right_menue {
+    float: right;
+    margin-left: 0px;
+    width: 28%;
+    border: 4px solid;
+    height: 100%;
+    box-sizing: border-box;
+    border-color: rgb(255, 180, 180);
+    background-color: rgb(255, 236, 236);
+    /* overflow-y: auto; */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.cardSelecterh1{
+    font-size: 2.5rem ;
+    text-align: center;
+    border: 2px solid;
+    border-radius: 5px;
+    color:rgb(255, 113, 113);
+    background-color: white;
+    font-family: "MS Pゴシック";
+    font-style: italic;
+    z-index: 70000000;
+}

@@ -1,0 +1,134 @@
+/* 画面全体のコンテナ */
+.card-view-container {
+  padding: 40px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-view-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-view-container p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+/* カードを並べるグリッド */
+.card-grid {
+  display: grid;
+  /* 列の幅を自動調整し、最小250px、最大1fr(利用可能なスペース)に設定 */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px; /* カード間の余白 */
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 個々のカードのスタイル */
+.info-card {
+  border: 3px solid #ff9800; /* オレンジ色の枠線 */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.info-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.info-card p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* スタート画面に戻るボタン */
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+.button-link:hover {
+  background-color: #0056b3;
+}
+
+
+/* --- ポップアップ（モーダル）のスタイル --- */
+
+/* 背景のオーバーレイ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ポップアップの本体 */
+.modal-content {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-align: left;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.modal-content p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* 閉じるボタン */
+.close-button {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  padding: 10px 25px;
+  border: none;
+  background-color: #6c757d;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.close-button:hover {
+  background-color: #5a6268;
+}

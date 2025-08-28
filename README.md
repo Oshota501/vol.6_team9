@@ -1,3 +1,8 @@
 # vol.6_team9
 関西ビギナーズハッカソンvol.6
-全消ししまーすww
+```bash
+cd team9
+npm install
+npm run dev
+```
+

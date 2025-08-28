@@ -1,0 +1,47 @@
+/* ブロックの基本スタイル */
+.obj {
+    width: 6rem;
+    height: 6rem;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background-color: #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    /* ★重要★ 初期配置のために絶対座標を使います */
+    position: absolute;
+  }
+  
+  /* 選択されたブロックのスタイル */
+  .obj.selected {
+    border: 3px solid #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    transform: scale(1.05);
+  }
+  
+  /* ブロックの初期位置 */
+  .item-top-left {
+    top: 20px;
+    left: 20px;
+  }
+  .item-bottom-right {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  /* グループ化された後のスタイル */
+  .block-group {
+      /* グループ自体はFlexboxなどで配置されるため、絶対座標である必要はありません */
+      position: relative; 
+      border: 1px dashed blue; /* グループの範囲を分かりやすく表示 */
+      padding: 10px;
+  }
+  
+  /* グループの中に入ったブロックは、絶対座標指定を解除します */
+  .block-group .obj {
+      position: static;
+  }
