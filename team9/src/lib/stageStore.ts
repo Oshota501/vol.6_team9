@@ -50,9 +50,10 @@ export const useStageStore = create<StageStore>((set) => ({
         { id: 7, content: "G" },
         { id: 8, content: "H" },
         { id: 9, content: "I" },
+        { id: 10, content: "J" },
       ],
       cards: [
-        { explain: "", code: { }, bew: "目標：階段状にしてください。", isSelect: true },
+        { explain: "", code: { display:"flex",}, bew: "display:flex;", isSelect: true },
       ],
     },
     // ...必要に応じてステージ追加

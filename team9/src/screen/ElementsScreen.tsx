@@ -39,6 +39,7 @@ export default function ElementsScreen({ blocks, groups, selectedBlockIds, onBlo
     return (
         // パズルエリア全体を囲むコンテナ
         <div className="puzzle-container">
+            
             {/* まず、作成されたグループをmap関数で一つずつ描画します */}
             {groups.map(group => (
                 // グループの親div。page.tsxから渡されたスタイルがここに適用される
