@@ -1,4 +1,5 @@
 "use client";
+import { Link } from "react-router-dom";
 import CardsScreen from "./CardsScreen";
 import ElementsScreen from "./ElementsScreen";
 import { useState, useEffect } from "react"; // ←ここ
@@ -114,9 +115,13 @@ export default function GameScreenHome() {
                     onCardApply={handleCardApply}
                     cards={stageData.cards}
                     // 以下のPropsはCardsScreenが要求するが、今の機能では使わないためダミー値
-                    isCard={false} setIsCard={()=>{}} setChCSS={()=>{}} collision={false}
+                    // isCard={false} 
+                    // setIsCard={()=>{}} setChCSS={()=>{}} collision={false}
                 />
             </div>
+            <Link to="/" className="back-button" title="スタート画面に戻る">
+                ←
+            </Link>
         </div>
     );
 }

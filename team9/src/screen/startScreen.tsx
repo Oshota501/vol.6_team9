@@ -20,6 +20,12 @@ const StartScreen: React.FC = () => {
                         ステージ一覧を見ることができます
                     </p>
                 </Link>
+                <Link to="/endless_game" className="content">
+                    <button className="card">クソゲー</button>
+                    <p className="card-hover-text">
+                        クソゲーに移行します。
+                    </p>
+                </Link>
             </div>
         </>
     );

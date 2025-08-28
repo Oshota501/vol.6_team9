@@ -232,6 +232,7 @@ export default function Game() {
   return (
     <>
       <div className="game_field">
+
         <div className="game">
             <div className="menue_game">
                 ここで評価。100点満点。<FetchReqButton
@@ -270,7 +271,13 @@ export default function Game() {
             />
           ))}
         </div>
+        <a href="/">
+          <div className="back_button">
+            ←
+          </div>
+        </a>
       </div>
+
     </>
   );
 }
