@@ -238,7 +238,7 @@ export default function Game() {
                 ここで評価。100点満点。<FetchReqButton
                     url="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
                     btn_text="評価"
-                    GEMINI_API_KEY="AIzaSyB92SXdigHYa815phtYbCJN_otKiuVJJeg"
+                    GEMINI_API_KEY=""
                     getPrompt = {handleEvaluate}
                     disabled={!allCardsUsed} // ← 追加
                 />
