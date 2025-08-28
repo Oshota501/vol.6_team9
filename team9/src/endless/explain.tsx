@@ -1,8 +1,8 @@
 import "./style.css" ;
 export default function GameExplain(){
-    function handleClick(){
+    // function handleClick(){
 
-    }
+    // }
     return (
         <> 
             <div>
