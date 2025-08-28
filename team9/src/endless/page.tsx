@@ -236,16 +236,16 @@ export default function Game() {
 
         <div className="game">
             <div className="menue_game">
-                ここで評価。100点満点。<input 
-                  value={GEMINI_API_KEY}
-                  onChange={(event) => setAPIkey(event.target.value)}
-                  style={{width:"30rem",}}
-                /> &nbsp;<FetchReqButton
+                ここで評価。100点満点。 &nbsp;<FetchReqButton
                     url="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
                     btn_text="評価"
                     GEMINI_API_KEY={GEMINI_API_KEY}
                     getPrompt = {handleEvaluate}
                     disabled={!allCardsUsed} // ← 追加
+                />&nbsp;APIkeyの取得は<a href="https://aistudio.google.com/apikey">こちら</a>&nbsp;<input 
+                  value={GEMINI_API_KEY}
+                  onChange={(event) => setAPIkey(event.target.value)}
+                  style={{width:"25rem",}}
                 />
                 
                 {!allCardsUsed && (
