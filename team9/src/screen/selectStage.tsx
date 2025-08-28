@@ -11,9 +11,9 @@ const StageSelect: React.FC = () => {
     return (
         <div className="select-stage-container">
             {/* 左上のスタート画面に戻るボタン */}
-            <Link to="/" className="back-button" title="スタート画面に戻る">
+            {/* <Link to="/" className="back-button" title="スタート画面に戻る">
                 ←
-            </Link>
+            </Link> */}
 
             {/* 中央のステージ選択カードコンテナ */}
             <div className="stage-cards-wrapper">
