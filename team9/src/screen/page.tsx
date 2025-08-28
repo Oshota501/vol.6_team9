@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"; // ←ここ
 import type { CSSProperties } from 'react';
 import "./style.css";
 import { useStageStore } from "../lib/stageStore"; // ←ここ
-
+// @ts-ignore
 interface Block {
     id: number;
     content: string;
