@@ -198,6 +198,7 @@ export default function Game() {
   const [cards, setCards] = useState<Card[]>([]);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [gameObjs, setGameObjs] = useState<GameObject[]>(initialGameObjs);
+  const [GEMINI_API_KEY,setAPIkey ] = useState<string>("ここにgeminiのAPIキーを入れてください。")
 
   // カードが全て使い切られているか判定
   const allCardsUsed = cards.length === 0;
@@ -228,20 +229,25 @@ export default function Game() {
     setCards(prev => prev.filter((_, idx) => idx !== selectedIndex));
     setSelectedIndex(null);
   };
-  
+
   return (
     <>
       <div className="game_field">
 
         <div className="game">
             <div className="menue_game">
-                ここで評価。100点満点。<FetchReqButton
+                ここで評価。100点満点。<input 
+                  value={GEMINI_API_KEY}
+                  onChange={(event) => setAPIkey(event.target.value)}
+                  style={{width:"30rem",}}
+                /> &nbsp;<FetchReqButton
                     url="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
                     btn_text="評価"
-                    GEMINI_API_KEY=""
+                    GEMINI_API_KEY={GEMINI_API_KEY}
                     getPrompt = {handleEvaluate}
                     disabled={!allCardsUsed} // ← 追加
                 />
+                
                 {!allCardsUsed && (
                   <div style={{color: "red", fontWeight: "bold", marginTop: 8}}>
                     全てのカードを使い切るまで評価できません
