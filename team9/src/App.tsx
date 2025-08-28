@@ -6,7 +6,6 @@ import GameScreenHome from './screen/page';
 import './App.css';
 import Game from "./endless/page";
 import Background from "./background";
-import BgImg from "/public/background.png";
 
 function App() {
     return (
