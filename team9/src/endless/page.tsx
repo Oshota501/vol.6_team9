@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, CSSProperties , useRef } from "react"; // ← CSSPropertiesをインポート
+import { useState, useEffect, useRef } from "react";
+import type { CSSProperties } from "react"; // CSSPropertiesは型としてインポート
 import "./t2.css";
 
 // --- 型定義 ---
