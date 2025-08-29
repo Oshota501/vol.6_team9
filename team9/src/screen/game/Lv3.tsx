@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./style.css"
-import "./gm3.css"
+import "./style.css";
+import "./gm3.css";
 
-export default function GameLv3(){
+export default function GameLv3() {
     // カード一覧
     const cards = [
         { text: "", code: "background:yellow;\nanimation:5s linear infinite goj1_a;" },
@@ -17,10 +17,20 @@ export default function GameLv3(){
         { text: "", code: "animation:2s linear infinite goj1_a;" },
         { text: "", code: "width:500px;height:500px;" },
     ];
+
+    // ゲームオブジェクトの初期設定
+    const initialGameObjects = [
+        { text: "hello", className: "goj1" },
+        { text: "...world...", className: "goj2" },
+        { text: "!!!!", className: "goj3" },
+    ];
+
     // 選択中カードindex
     const [selectedCard, setSelectedCard] = useState<number | null>(null);
-    // GameObjに適用するstyle
-    const [objStyle, setObjStyle] = useState<React.CSSProperties>({});
+    // 各GameObjに適用するstyleの配列
+    const [objStyles, setObjStyles] = useState<React.CSSProperties[]>(
+        () => initialGameObjects.map(() => ({}))
+    );
 
     // style文字列をオブジェクトに変換
     function parseStyle(styleStr: string): React.CSSProperties {
@@ -36,28 +46,30 @@ export default function GameLv3(){
         return style;
     }
 
-    // GameObjクリック時
-    function handleObjClick() {
-        console.log("適用")
+    // GameObjクリック時（indexを受け取るように変更）
+    function handleObjClick(index: number) {
         if (selectedCard !== null) {
-            setObjStyle(parseStyle(cards[selectedCard].code));
+            setObjStyles(prevStyles => {
+                const newStyles = [...prevStyles];
+                newStyles[index] = parseStyle(cards[selectedCard].code);
+                return newStyles;
+            });
         }
     }
 
     return (
         <div className="main_field">
             <div className="field1">
-                <GameObj
-                    text="hello"
-                    className="goj1"
-                    style={objStyle}
-                    onClick={handleObjClick}
-                /><GameObj
-                    text="hello"
-                    className="goj1"
-                    style={objStyle}
-                    onClick={handleObjClick}
-                />
+                {/* 複数のGameObjを描画 */}
+                {initialGameObjects.map((obj, index) => (
+                    <GameObj
+                        key={index}
+                        text={obj.text}
+                        className={obj.className}
+                        style={objStyles[index]}
+                        onClick={() => handleObjClick(index)} // クリック時にindexを渡す
+                    />
+                ))}
             </div>
             <div className="field2">
                 <div className="card1">

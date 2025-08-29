@@ -48,8 +48,8 @@ export const useStageStore = create<StageStore>((set) => ({
       ],
       cards: [
         {explain: "グリッドに並べる",code: { display: "grid" },bew: "display: grid;",isSelect: true,},
-        {explain: "2列に分ける",code: { gridTemplateColumns: "1fr 1fr" },bew: "grid-template-columns: 1fr 1fr;",isSelect: true,},
-        {explain: "セル間に隙間を作る",code: { gap: "16px" },bew: "gap: 16px;",isSelect: true,},
+        {explain: "2列に分ける",code: { gridTemplateColumns: "1fr 1fr" ,display:"grid",},bew: "display: grid;\ngrid-template-columns: 1fr 1fr;",isSelect: true,},
+        {explain: "セル間に隙間を作る",code: { gap: "16px" ,display:"grid",},bew: "gdisplay: grid;\nap: 16px;",isSelect: true,},
       ],
     },
 

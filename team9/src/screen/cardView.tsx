@@ -18,11 +18,15 @@ const cardData = [
     property: 'flex-direction: column',
     description: 'アイテムが垂直方向に上から下へと配置されます。',
     detailedDescription: '主軸を垂直方向（上から下）に設定し、フレックスアイテムを配置します。'
-  },
-  {
+  },{
     property: 'flex-direction: column-reverse',
     description: 'アイテムが垂直方向に下から上へと配置されます。',
     detailedDescription: '主軸を垂直方向（下から上）に設定し、フレックスアイテムを逆順に配置します。'
+  },
+  {
+    property: 'display: grid;',
+    description: 'アイテムを格子状のマス目のグリッドに配置可能',
+    detailedDescription: 'アイテムを格子状のマス目のグリッドに配置可能。\n実際環境はgrid-template-rows:やgrid-template-columns:,gapを一緒に使います。Normal問題を触ってみるのが早いでしょう。'
   },
   // 他のカードもここに追加できます
 ];

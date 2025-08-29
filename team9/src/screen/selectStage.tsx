@@ -48,7 +48,7 @@ const StageSelect: React.FC = () => {
                             navigate("/game");
                         }}
                     >
-                        <h2>normal</h2>
+                        <h2>Normal</h2>
                         <p>選択肢が増えてややこしくなります。</p>
                     </button>
                 </div>
