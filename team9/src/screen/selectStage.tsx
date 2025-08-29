@@ -61,6 +61,21 @@ const StageSelect: React.FC = () => {
                         <p>頑張って綺麗にしてください。</p>
                     </button></Link>
                 </div>
+                <div className="stage-card">
+                    <Link to="/game/lv4"><button
+                        className="start-stage-button"
+                    >
+                        <h2>Gemini</h2>
+                        <p>AIが作った問題です。</p>
+                    </button></Link>
+                </div><div className="stage-card">
+                    <Link to="/game/lv5"><button
+                        className="start-stage-button"
+                    >
+                        <h2>Gemini</h2>
+                        <p>AIが作った問題です。</p>
+                    </button></Link>
+                </div>
                 {/* 必要に応じてステージカードを追加 */}
             </div>
 

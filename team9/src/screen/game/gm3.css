@@ -43,6 +43,8 @@
     text-align: center;
     border-radius: 50%;
     shape-outside: circle(50%);
+    margin: 0px auto;
+    background-color: rgb(255, 255, 209);
 }
 .goj3{
     background: linear-gradient(to right,yellow,pink,lightblue,lightgreen);
