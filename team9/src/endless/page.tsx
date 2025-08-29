@@ -198,7 +198,7 @@ export default function Game() {
   const [cards, setCards] = useState<Card[]>([]);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [gameObjs, setGameObjs] = useState<GameObject[]>(initialGameObjs);
-  const [GEMINI_API_KEY,setAPIkey ] = useState<string>("ここにgeminiのAPIキーを入れてください。")
+  const [GEMINI_API_KEY,setAPIkey ] = useState<string>("")
 
   // カードが全て使い切られているか判定
   const allCardsUsed = cards.length === 0;
@@ -244,8 +244,10 @@ export default function Game() {
                     disabled={!allCardsUsed} // ← 追加
                 />&nbsp;APIkeyの取得は<a href="https://aistudio.google.com/apikey">こちら</a>&nbsp;<input 
                   value={GEMINI_API_KEY}
+                  type="password"
                   onChange={(event) => setAPIkey(event.target.value)}
                   style={{width:"25rem",}}
+                  placeholder="Gemini API キーを入力してください。"
                 />
                 
                 {!allCardsUsed && (
