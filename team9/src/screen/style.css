@@ -43,3 +43,28 @@ body, html {
     font-style: italic;
     z-index: 70000000;
 }
+
+.card-answer-ex {
+  margin-top: 36px;
+  padding: 12px;
+  background-color: #fffbe6;
+  border: 2px dashed #ffd480;
+  border-radius: 8px;
+  text-align: center;
+}
+.card-answer-title {
+  font-size: 1.2rem;
+  color: #d87c00;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+.card-answer-diagram {
+  font-size: 1.1rem;
+  color: #333;
+  background: none;
+  border: none;
+  margin: 0;
+  white-space: pre;
+  text-align: left;
+  display: inline-block;
+}

@@ -1,7 +1,20 @@
 .title{
     font-size: 64px;
-    text-align: center;
+    text-align: left;
+    padding: 10px 120px;
     margin-bottom: 100px;
+    animation: title_a 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes title_a {
+    from {
+        opacity: 0;
+        transform: translateY(-120px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 .operation{

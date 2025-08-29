@@ -2,40 +2,161 @@
 import { Link } from "react-router-dom";
 import CardsScreen from "./CardsScreen";
 import ElementsScreen from "./ElementsScreen";
-import { useState, useEffect } from "react"; // ←ここ
+import { useState, useEffect } from "react";
 import type { CSSProperties } from 'react';
 import "./style.css";
-import { useStageStore } from "../lib/stageStore"; // ←ここ
-// @ts-ignore
-interface Block {
-    id: number;
-    content: string;
-  }
-  interface BlockGroup {
+import { useStageStore } from "../lib/stageStore";
+
+// ブロック定義
+// interface Block {
+//     id: number;
+//     content: string;
+// }
+
+// BlockGroupの入れ子対応
+interface BlockGroup {
     id: string;
     blockIds: number[];
     styles: CSSProperties;
-  }
-  
+    children?: BlockGroup[];
+}
+
+type FlatBlockGroup = BlockGroup & { parentId?: string };
+
+// 入れ子グループをフラットに変換
+function flattenGroups(groups: BlockGroup[], parentId?: string): FlatBlockGroup[] {
+    return groups.flatMap(group => [
+        { ...group, parentId },
+        ...(group.children ? flattenGroups(group.children, group.id) : [])
+    ]);
+}
+
+function addGroupWithNest(
+    prevGroups: BlockGroup[],
+    selectedBlockIds: number[],
+    css: CSSProperties
+): BlockGroup[] {
+    const flatGroups = flattenGroups(prevGroups);
+    const groupMap = new Map<number, FlatBlockGroup>();
+    flatGroups.forEach(g => g.blockIds.forEach(id => groupMap.set(id, g)));
+    const selectedBlockGroups = selectedBlockIds.map(id => groupMap.get(id)).filter(Boolean) as FlatBlockGroup[];
+    const parentIds = [...new Set(selectedBlockGroups.map(g => g.parentId))];
+    let newGroups = [...prevGroups];
+
+    if (
+        selectedBlockGroups.length > 0 &&
+        parentIds.length === 1 &&
+        parentIds[0]
+    ) {
+        const updateGroup = (groups: BlockGroup[]): BlockGroup[] =>
+            groups.map(g => {
+                if (g.id === parentIds[0]) {
+                    return {
+                        ...g,
+                        children: [
+                            ...(g.children || []),
+                            {
+                                id: `group-${Date.now()}`,
+                                blockIds: selectedBlockIds,
+                                styles: css,
+                                children: [],
+                            }
+                        ]
+                    };
+                }
+                return {
+                    ...g,
+                    children: g.children ? updateGroup(g.children) : []
+                };
+            });
+        newGroups = updateGroup(prevGroups);
+    } else {
+        const removeBlocks = (groups: BlockGroup[]): BlockGroup[] =>
+            groups
+                .map(g => ({
+                    ...g,
+                    blockIds: g.blockIds.filter(id => !selectedBlockIds.includes(id)),
+                    children: g.children ? removeBlocks(g.children) : [],
+                }))
+                .filter(g => g.blockIds.length > 0 || (g.children && g.children.length > 0));
+
+        const cleanedGroups = removeBlocks(prevGroups);
+        newGroups = [
+            ...cleanedGroups,
+            {
+                id: `group-${Date.now()}`,
+                blockIds: selectedBlockIds,
+                styles: css,
+                children: [],
+            }
+        ];
+    }
+
+    return newGroups;
+}
+
+// ---- ここから正解例の表示ロジック追加 ----
+
+// ステージごとに正解例（画像or文字）を用意
+const stageAnswers: (string | undefined)[] = [
+    `
++-------------+
+| [あ] [い]    |
++-------------+
+    `,
+    `
++-----+
+| [A] |
+| [B] |
+| [C] |
++------+
+    `,
+    `
++-----+
+| [A] |
+| [B] |
++------+
+| [C] |
+| [D] |
++------+
+    `,
+    // 2ステージ目以降は必要に応じて追加
+    undefined,
+];
+
+// 正解例表示用コンポーネント
+function StageAnswer({ answer }: { answer?: string }) {
+    if (!answer) return null;
+    // 画像ならimg表示、テキストならpreで整形
+    const isImage = /^https?:\/\//.test(answer.trim());
+    return (
+        <div className="card-answer-ex">
+            <div className="card-answer-title">正解例</div>
+            {isImage ? (
+                <img src={answer.trim()} alt="正解例" style={{ maxWidth: "90%", margin: "16px auto", display: "block" }} />
+            ) : (
+                <pre className="card-answer-diagram">{answer.trim()}</pre>
+            )}
+        </div>
+    );
+}
+
+// ---- CSSを追加すること（下記） ----
 
 export default function GameScreenHome() {
-    // Zustandから取得
     const { currentStage, stages } = useStageStore();
     const stageData = stages[currentStage];
 
-    // useStateで初期値
     const [blocks, setBlocks] = useState(stageData.blocks);
     const [selectedBlockIds, setSelectedBlockIds] = useState<number[]>([]);
-    const [blockGroups, setBlockGroups] = useState<BlockGroup[]>([]); // 型を明確化
+    const [blockGroups, setBlockGroups] = useState<BlockGroup[]>([]);
 
-    // ステージ切り替え時に初期化
     useEffect(() => {
         setBlocks(stageData.blocks);
         setSelectedBlockIds([]);
         setBlockGroups([]);
     }, [stageData]);
 
-    // --- ロジック（関数）エリア ---
     const handleBlockClick = (blockId: number) => {
         setSelectedBlockIds(prevSelectedIds =>
             prevSelectedIds.includes(blockId)
@@ -46,40 +167,7 @@ export default function GameScreenHome() {
 
     const handleCardApply = (css: CSSProperties) => {
         if (selectedBlockIds.length === 0) return;
-    
-        setBlockGroups(prevGroups => {
-            // 1. 今回選択されたブロックIDに接触する既存グループを全て見つける
-            const relevantGroups = prevGroups.filter(group =>
-                group.blockIds.some(id => selectedBlockIds.includes(id))
-            );
-            // 2. 接触しなかった、無関係なグループ
-            const unrelatedGroups = prevGroups.filter(group =>
-                !group.blockIds.some(id => selectedBlockIds.includes(id))
-            );
-
-            // 3. 接触したグループと、今回選択したブロックを全てマージして、
-            //    新しいブロックIDのリストを作成する (Setで重複を削除)
-            const allIdsToMerge = [
-                ...selectedBlockIds,
-                ...relevantGroups.flatMap(g => g.blockIds)
-            ];
-            const mergedBlockIds = [...new Set(allIdsToMerge)].sort((a, b) => a - b);
-
-            // 4. マージ後のスタイルを作成する
-            // 接触したグループがあればそのスタイルを引き継ぎ、新しいスタイルで上書きする
-            const baseStyles = relevantGroups.length > 0 ? relevantGroups[0].styles : {};
-            const mergedStyles = { ...baseStyles, ...css };
-    
-            // 5. マージされた新しいグループを1つ作成
-            const mergedGroup: BlockGroup = {
-                id: `group-${Date.now()}`,
-                blockIds: mergedBlockIds,
-                styles: mergedStyles,
-            };
-
-            // 6. 無関係だったグループと、新しくマージしたグループを合わせて返す
-            return [...unrelatedGroups, mergedGroup];
-        })
+        setBlockGroups(prevGroups => addGroupWithNest(prevGroups, selectedBlockIds, css));
         setSelectedBlockIds([]);
     };
 
@@ -94,7 +182,6 @@ export default function GameScreenHome() {
         }
     };
 
-    // --- JSX（画面の見た目）エリア ---
     return (
         <div className="main">
             <div className="left_menue">
@@ -114,10 +201,9 @@ export default function GameScreenHome() {
                 <CardsScreen
                     onCardApply={handleCardApply}
                     cards={stageData.cards}
-                    // 以下のPropsはCardsScreenが要求するが、今の機能では使わないためダミー値
-                    // isCard={false} 
-                    // setIsCard={()=>{}} setChCSS={()=>{}} collision={false}
                 />
+                {/* ここに正解例を追加 */}
+                <StageAnswer answer={stageAnswers[currentStage]} />
             </div>
             <Link to="/" className="back-button" title="スタート画面に戻る">
                 ←

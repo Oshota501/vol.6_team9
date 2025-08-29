@@ -52,6 +52,11 @@ export default function GameLv3(){
                     className="goj1"
                     style={objStyle}
                     onClick={handleObjClick}
+                /><GameObj
+                    text="hello"
+                    className="goj1"
+                    style={objStyle}
+                    onClick={handleObjClick}
                 />
             </div>
             <div className="field2">

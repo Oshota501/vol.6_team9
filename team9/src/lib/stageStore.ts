@@ -45,17 +45,14 @@ export const useStageStore = create<StageStore>((set) => ({
         { id: 2, content: "B" },
         { id: 3, content: "C" },
         { id: 4, content: "D" },
-        { id: 5, content: "E" },
-        { id: 6, content: "F" },
-        { id: 7, content: "G" },
-        { id: 8, content: "H" },
-        { id: 9, content: "I" },
-        { id: 10, content: "J" },
       ],
       cards: [
-        { explain: "", code: { display:"flex",}, bew: "display:flex;", isSelect: true },
+        {explain: "グリッドに並べる",code: { display: "grid" },bew: "display: grid;",isSelect: true,},
+        {explain: "2列に分ける",code: { gridTemplateColumns: "1fr 1fr" },bew: "grid-template-columns: 1fr 1fr;",isSelect: true,},
+        {explain: "セル間に隙間を作る",code: { gap: "16px" },bew: "gap: 16px;",isSelect: true,},
       ],
     },
+
     // ...必要に応じてステージ追加
   ],
   setStage: (idx) => set({ currentStage: idx }),
