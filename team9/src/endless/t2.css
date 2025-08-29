@@ -27,6 +27,10 @@
     background-color: rgb(240, 255, 240);
     overflow-y: scroll;
 }
+.menue_game strong{
+    color:yellow;
+    background-color: black;
+}
 .menue_game button{
     background-color: rgb(213, 253, 208);
     padding: 4px 4px;
@@ -47,6 +51,7 @@
     overflow-y: scroll; 
 
 }
+
 .card_{
     padding: 0px 6px;
     border-radius: 6px;

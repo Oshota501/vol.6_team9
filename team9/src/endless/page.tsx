@@ -242,7 +242,7 @@ export default function Game() {
                     GEMINI_API_KEY={GEMINI_API_KEY}
                     getPrompt = {handleEvaluate}
                     disabled={!allCardsUsed} // ← 追加
-                />&nbsp;APIkeyの取得は<a href="https://aistudio.google.com/apikey">こちら</a>&nbsp;<input 
+                />&nbsp;<strong>APIキーは絶対に他人に公開したりしないでください!!</strong>デモなのでご容赦を...&nbsp;<input 
                   value={GEMINI_API_KEY}
                   type="password"
                   onChange={(event) => setAPIkey(event.target.value)}
