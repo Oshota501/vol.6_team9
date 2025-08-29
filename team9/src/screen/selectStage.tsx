@@ -41,15 +41,15 @@ const StageSelect: React.FC = () => {
                         <p>少し難しくなります。新しい要素が登場します。</p>
                     </button>
                 </div>
-                <Link to="/game/lv3">
+                
                 <div className="stage-card">
-                    <button
+                    <Link to="/game/lv3"><button
                         className="start-stage-button"
                     >
                         <h2>Monster</h2>
-                        
-                    </button>
-                </div></Link>
+                        <p>頑張って綺麗にしてください。</p>
+                    </button></Link>
+                </div>
                 {/* 必要に応じてステージカードを追加 */}
             </div>
 

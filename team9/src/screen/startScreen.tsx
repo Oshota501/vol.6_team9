@@ -21,7 +21,8 @@ const StartScreen: React.FC = () => {
                     </p>
                 </Link>
                 <Link to="/endless_game" className="content">
-                    <button className="card">クソゲー</button>
+                    <button className="card">テスト
+                    </button>
                     <p className="card-hover-text">
                         あなたのcss力テスト!
                     </p>
