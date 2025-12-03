@@ -1,3 +1,5 @@
+# DS_StoreとNodeModuleをリポジトリに突っ込む狂気ぶり
+
 # vol.6_team9
 関西ビギナーズハッカソンvol.6
 ```bash
